@@ -18,3 +18,6 @@ mariadb:
   database: ansidev
   user: ansidev
   password: secure
+nvm:
+  version: v0.29.0
+  node_version: '4.2.2'

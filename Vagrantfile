@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
             ansible.playbook       = "ansible/playbook.yml"
             ansible.inventory_path = "ansible/inventories/dev"
             ansible.limit          = "all"
-            #ansible.tags           = ['base', 'server', 'php', 'db', 'in-mem-store']
+            #ansible.tags           = ['base', 'server', 'php', 'db', 'in-mem-store', 'node']
         end
     else
         config.vm.provision :shell, path: "ansible/windows.sh", args: [vbname]
