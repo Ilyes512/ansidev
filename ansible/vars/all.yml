@@ -8,6 +8,8 @@ php:
   xdebug: false # Not yet available for php7.0
   max_file_upload: 100m
   max_body_size: 106m
+redis:
+  phpredis_version: php7
 nginx:
   docroot: /vagrant/
   servername: ansidev.dev
