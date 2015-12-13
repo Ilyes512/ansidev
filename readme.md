@@ -7,4 +7,15 @@
         \/     \/     \/        \/    \/      
 ```
 
-A couple of Ansible roles to setup a local virtual box with Nginx, PHP 7, Composer, MariaDB, NVM and Redis.
+A couple of Ansible roles to setup a local development environment.
+
+## Included Roles
+
+- Base
+- Composer
+- MariaDB
+- MongoDB
+- Nginx
+- NVM (Node Version Manager)
+- PHP (7)
+- Redis
