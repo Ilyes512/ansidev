@@ -1,36 +1,32 @@
 ---
-- name: Update apt
-  sudo: yes
-  apt:
-    update_cache: yes
-
-- name: Upgrade apt packages
+- name: Base | Upgrade apt-packages
   sudo: yes
   apt:
     upgrade: safe
     force: yes
+    update_cache: yes
   when: apt.upgrade_packages == "safe"
 
-- name: Upgrade apt packages
+- name: Base | Upgrade apt-packages
   sudo: yes
   apt:
     upgrade: full
     force: yes
   when: apt.upgrade_packages == "full"
 
-- name: Install System Packages
+- name: Base | Install System Packages
   apt:
     pkg: "{{ item }}"
     state: latest
   with_items: apt.sys_packages
 
-- name: Configure the timezone
+- name: Base | Configure the timezone
   sudo: yes
   template:
     src: timezone.tpl
     dest: /etc/timezone
 
-- name: More timezone configuration
+- name: Base | More timezone configuration
   sudo: yes
   file:
     src: "/usr/share/zoneinfo/{{ base.timezone }}"
@@ -39,11 +35,13 @@
     force: yes
     backup: yes
 
-- name: Set default system language pack
-  shell: "locale-gen {{ base.locale }}"
+- name: Base | Set default system language pack
+  locale_gen:
+    name: "{{ base.locale }}"
+    state: present
   sudo: yes
 
-- name: Set VIM as default editor
+- name: Base | Set VIM as default editor
   command: update-alternatives --set editor /usr/bin/vim.basic
 
 - include: swap.yml
