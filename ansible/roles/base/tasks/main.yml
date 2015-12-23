@@ -5,6 +5,7 @@
     upgrade: safe
     force: yes
     update_cache: yes
+    cache_valid_time: 3600
   when: apt.upgrade_packages == "safe"
 
 - name: Base | Upgrade apt-packages
@@ -12,6 +13,8 @@
   apt:
     upgrade: full
     force: yes
+    update_cache: yes
+    cache_valid_time: 3600
   when: apt.upgrade_packages == "full"
 
 - name: Base | Install System Packages
