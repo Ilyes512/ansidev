@@ -44,5 +44,19 @@
 - name: Base | Set VIM as default editor
   command: update-alternatives --set editor /usr/bin/vim.basic
 
+- name: Base | Installing cachefilesd
+  sudo: yes
+  apt:
+    pkg: cachefilesd
+    update_cache: yes
+    cache_valid_time: 3600
+  when: base.cachefilesd === True
+
+- name: Base | Enable cachefilesd
+  sudo: true
+  template:
+    src: cahcefilesd.tpl
+    dest: /etc/default/cachefilesd
+
 - include: swap.yml
   when: base.swap
