@@ -53,13 +53,14 @@
     pkg: cachefilesd
     update_cache: yes
     cache_valid_time: 3600
-  when: base.cachefilesd === True
+  when: base.cachefilesd
 
 - name: Base | Enable cachefilesd
   sudo: true
   template:
-    src: cahcefilesd.tpl
+    src: cachefilesd.tpl
     dest: /etc/default/cachefilesd
+  when: base.cachefilesd
 
 - include: swap.yml
   when: base.swap
